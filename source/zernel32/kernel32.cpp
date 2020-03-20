@@ -97,3 +97,20 @@ extern "C" BOOL WINAPI QueryFullProcessImageNameA(
 	DWORD result = GetModuleFileNameExA(hProcess, NULL, lpExeName, *lpdwSize);
 	return result;
 }
+
+extern "C" BOOL WINAPI QueryFullProcessImageNameW(
+    HANDLE hProcess, DWORD dwFlags, LPWSTR lpExeName, PDWORD pdwSize)
+{
+    DWORD result = GetModuleFileNameExW(hProcess, NULL, lpExeName, *pdwSize);
+    return result;
+}
+
+extern "C" DWORD WINAPI K32GetProcessImageFileNameA(HANDLE process, LPSTR file, DWORD size)
+{
+    return QueryFullProcessImageNameA(process, PROCESS_NAME_NATIVE, file, &size) ? size : 0;
+}
+
+extern "C" DWORD WINAPI K32GetProcessImageFileNameW(HANDLE process, LPWSTR file, DWORD size)
+{
+    return QueryFullProcessImageNameW(process, PROCESS_NAME_NATIVE, file, &size) ? size : 0;
+}

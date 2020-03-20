@@ -16,6 +16,10 @@
 #pragma comment(linker, "/export:InitializeCriticalSectionEx=_InitializeCriticalSectionEx@12")
 #pragma comment(linker, "/export:GetThreadId=_GetThreadId@4")
 #pragma comment(linker, "/export:QueryFullProcessImageNameA=_QueryFullProcessImageNameA@16")
+#pragma comment(linker, "/export:QueryFullProcessImageNameW=_QueryFullProcessImageNameW@16")
+#pragma comment(linker, "/export:K32GetProcessImageFileNameA=_K32GetProcessImageFileNameA@12") 
+#pragma comment(linker, "/export:K32GetProcessImageFileNameW=_K32GetProcessImageFileNameW@12") 
+#pragma comment(linker, "/export:K32EnumProcesses=_K32EnumProcesses@12") 
 
 // forwards to the real dll
 #pragma comment(linker, "/export:ActivateActCtx=kernel32.ActivateActCtx,@1")
